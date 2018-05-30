@@ -44,15 +44,14 @@ createOrders(){
           if(responseJSON.user){
             sessionStorage.setItem('user', responseJSON);
             this.setState({ redirect: true});
+            alert("Orders Created")
           }else{
-            console.log("login Error")
+            alert("Orders not created")
           }
         });
         }else{
-          alert("Enter username and Password");
+          alert("Enter name correctly");
         }
-        
-        
     
 }
 

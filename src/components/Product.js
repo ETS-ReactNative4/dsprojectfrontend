@@ -26,10 +26,10 @@ class Product extends Component {
             storedata('products', this.state).then ((result) => {
                 let responseJSON = result;
                 if(responseJSON){
-                    console.log("Created")
+                    alert("Product Created")
                 }
                 else{
-                    console.log("No Response from Sails")
+                    alert("No Response from server: Failed ")
                 }
             });
         }

@@ -14,23 +14,26 @@ class Signup extends Component {
             username: '',
             password: '',
             phone: '',
-            redirect: false
+            redirect: false,
+            redirect1: false
+
         }
 
         this.Signup = this.Signup.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.tologin = this.tologin.bind(this);
     }
     
     Signup(){
       if(this.state.username && this.state.password){
-      console.log("SignUp Function");
       storedata('users', this.state).then ((result) => {
         let responseJSON = result;
         if(responseJSON.user){
+          alert("Signup Successful")
           sessionStorage.setItem('user', responseJSON);
           this.setState({ redirect: true});
         }else{
-          console.log("SignUp Error")
+          alert("SignUp Error")
         }
       });
       }else{
@@ -43,10 +46,18 @@ class Signup extends Component {
       this.setState({[e.target.name]: e.target.value})
       console.log(this.state)
     }
+    tologin(e){
+      this.setState({ redirect1: true})
+      console.log(this.state)
+    }
     
   render() {
     const { redirect } = this.state;
     if( redirect ){ 
+      return <Redirect to='/signin' />;
+    }
+    const { redirect1 } = this.state;
+    if( redirect1 ){ 
       return <Redirect to='/signin' />;
     }
     return (
@@ -63,8 +74,11 @@ class Signup extends Component {
         <br/>
         <input type="text"  name="phone" placeholder="Enter phone" onChange={this.onChange}/>
         <br/>
-        <button type="button" onClick={this.Signup}>Login</button>
-         </div>
+        <button type="button" onClick={this.Signup}>Signup</button>
+        </div>
+
+        <spam>Have an Account?</spam><button type="button" onClick={this.tologin}>Login</button>
+
       </div>
     );
   }

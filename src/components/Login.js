@@ -3,6 +3,7 @@ import { PostData } from './PostData';
 import { storedata } from './storedata';
 import { Redirect } from 'react-router-dom';
 
+
 class Login extends Component {
 
     constructor(props){
@@ -17,7 +18,6 @@ class Login extends Component {
         this.onChange = this.onChange.bind(this);
     }
     
-
     login(){
       if(this.state.username && this.state.password){
       console.log("Login Function");
@@ -27,7 +27,7 @@ class Login extends Component {
           sessionStorage.setItem('user', responseJSON);
           this.setState({ redirect: true});
         }else{
-          console.log("login Error")
+          alert("incorrect Credential")
         }
       });
       }else{
@@ -56,6 +56,7 @@ class Login extends Component {
         <br/>
         <button type="button" onClick={this.login}>Login</button>
          </div>
+     
       </div>
     );
   }
