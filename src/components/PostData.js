@@ -1,6 +1,6 @@
 
 export function PostData(type, userData){
-    let BaseUrl = "http://localhost:1337/";
+    let BaseUrl = "https://handyman-heroku.herokuapp.com/";
 
 
     return new Promise((resolve, reject) => {

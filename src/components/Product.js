@@ -1,6 +1,6 @@
 import  React from 'react';
 import { Component } from 'react';
-import { PostData } from './PostData';
+import { Redirect } from 'react-router-dom';
 import { storedata } from './storedata';
 
 
@@ -13,13 +13,21 @@ class Product extends Component {
         this.state = {
             product: '',
             prizes: '',
-            description: ''
+            description: '',
+            redirect: false
         }
 
         this.createProduct = this.createProduct.bind(this);
         this.onChange = this.onChange.bind(this);
     }
 
+    componentDidMount() {
+        if (localStorage.getItem('token') === null) {
+            this.setState({
+                redirect: true
+            });
+        };
+    }
     createProduct(){
         if(this.state.product && this.state.prizes && this.state.description){
             console.log("Create products");
@@ -43,6 +51,10 @@ class Product extends Component {
         console.log(this.state)
       }
   render() {
+    const { redirect } = this.state;
+    if( redirect ){ 
+      return <Redirect to='/signin' />;
+    }
     return (
       <div className="home">
         <h2>Create products </h2>

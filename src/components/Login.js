@@ -1,68 +1,86 @@
-import React, { Component } from 'react';
-import { PostData } from './PostData';
-import { storedata } from './storedata';
-import { Redirect } from 'react-router-dom';
+  import React, { Component } from 'react';
+  import { PostData } from './PostData';
+  import { storedata } from './storedata';
+  import { Redirect } from 'react-router-dom';
 
 
-class Login extends Component {
+  class Login extends Component {
 
-    constructor(props){
-        super(props);
+      constructor(props){
+          super(props);
 
-        this.state = {
-            username: '',
-            password: '',
+          this.state = {
+            fields: {
+              username: '',
+              password: ''
+          },
             redirect: false
-        }
-        this.login = this.login.bind(this);
-        this.onChange = this.onChange.bind(this);
+          }
+          this.login = this.login.bind(this);
+          this.onChange = this.onChange.bind(this);
+      }
+
+      componentDidMount() {
+        if (localStorage.getItem('token') !== null) {
+            this.setState({
+                redirect: true
+            });
+        };
     }
+      
+      
+  login(e){
+    e.preventDefault();
+        
     
-    login(){
-      if(this.state.username && this.state.password){
-      console.log("Login Function");
-      PostData('users', this.state).then ((result) => {
-        let responseJSON = result;
-        if(responseJSON.user){
-          sessionStorage.setItem('user', responseJSON);
-          this.setState({ redirect: true});
-        }else{
-          alert("incorrect Credential")
-        }
-      });
+    if(this.state.fields.username && this.state.fields.password){
+        PostData('users', this.state.fields).then ((result) => {
+          let responseJSON = result;
+          if(responseJSON.token){
+            console.log(responseJSON.found);
+            localStorage.setItem('token', responseJSON.token);
+            this.setState({ redirect: true});
+          }else{
+            alert("incorrect Credential")
+          }
+        });
       }else{
         alert("Enter username and Password");
-      }
-      
     }
-
-    onChange(e){
-      this.setState({[e.target.name]: e.target.value})
-      console.log(this.state)
-    }
-    
-  render() {
-    const { redirect } = this.state;
-    if( redirect ){ 
-      return <Redirect to='/home' />;
-    }
-    return (
-      <div className="Signup">
-        <h2>Login </h2>
-        <div className= "form-group"> 
-        <input type="text"  name="username" placeholder="username" onChange={this.onChange}/>
-        <br/>
-        <input type="text" name="password" placeholder="password" onChange={this.onChange}/>
-        <br/>
-        <button type="button" onClick={this.login}>Login</button>
-         </div>
-     
-      </div>
-    );
+        
   }
-}
 
-export default Login;
+  onChange(e){
+    var currentFields = this.state.fields;
+    currentFields[e.target.name] = e.target.value;
+    this.setState({
+        fields: currentFields
+    });
+    console.log(this.state)
+  }
+      
+    render() {
+      const { redirect } = this.state;
+      if( redirect ){ 
+        return <Redirect to='/home' />;
+      }
+      return (
+        <div className="Signup">
+          <h2>Login </h2>
+          <div className= "form-group"> 
+          <input type="text"  name="username" placeholder="username" onChange={this.onChange}/>
+          <br/>
+          <input type="text" name="password" placeholder="password" onChange={this.onChange}/>
+          <br/>
+          <button type="button" onClick={this.login}>Login</button>
+          </div>
+      
+        </div>
+      );
+    }
+  }
+
+  export default Login;
 
 
 
