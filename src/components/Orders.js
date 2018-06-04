@@ -54,6 +54,8 @@ createOrders(){
           let responseJSON = result;
           if(responseJSON){
               console.log(responseJSON.orders)
+              alert("order Created");
+              window.location.reload();
           }else{
             alert("Orders not created")
           }
