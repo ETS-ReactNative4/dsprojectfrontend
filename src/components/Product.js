@@ -2,6 +2,7 @@ import  React from 'react';
 import { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { storedata } from './storedata';
+import Navbar from './navbar';
 
 
 
@@ -19,7 +20,6 @@ class Product extends Component {
 
         this.createProduct = this.createProduct.bind(this);
         this.onChange = this.onChange.bind(this);
-        this.goBack = this.goBack.bind(this);
     }
 
     componentDidMount() {
@@ -29,9 +29,7 @@ class Product extends Component {
             });
         };
     }
-    createProduct(e){
-        e.preventDefault();
-
+    createProduct(){
         if(this.state.product && this.state.prizes && this.state.description){
             console.log("Create products");
             storedata('products', this.state).then ((result) => {
@@ -50,23 +48,10 @@ class Product extends Component {
         }
     }
 
-    goBack(){
-        this.goBack.history.goBack();
-    }
-
     onChange(e){
         this.setState({[e.target.name]: e.target.value})
         console.log(this.state)
       }
-      
-      
-    clearData(){
-        this.setState({
-            product: '',
-            prizes: '',
-            description: ''
-        })
-    }
   render() {
     const { redirect } = this.state;
     if( redirect ){ 
@@ -74,12 +59,14 @@ class Product extends Component {
     }
     return (
       <div className="home">
+
+      <Navbar username={this.state.username} />
+      <br /><br />
         <h2>Create products </h2>
         <input type="text" name="product" placeholder="enter product" onChange={this.onChange}/><br/><br/>
         <input type="text" name="prizes" placeholder="enter prizes" onChange={this.onChange}/><br/><br/>
         <textarea type="text" name="description" placeholder="Description" onChange={this.onChange}/><br/><br/>
         <button onClick={this.createProduct}>Create products</button>
-        <button onClick={this.goBack}>back</button>
         <br/>
       </div>
     );

@@ -1,0 +1,72 @@
+[33mcommit 7e85b2db00b2960eaa26b006f27525472f29e26e[m
+Author: chinedu_16 <chinedu.ohagwu@gmail.com>
+Date:   Mon Jun 4 13:43:57 2018 +0100
+
+    new push
+
+[1mdiff --git a/frontend b/frontend[m
+[1mnew file mode 160000[m
+[1mindex 00000000..c3088dbd[m
+[1m--- /dev/null[m
+[1m+++ b/frontend[m
+[36m@@ -0,0 +1 @@[m
+[32m+[m[32mSubproject commit c3088dbda5dda4268347b356c1e579255715b71a[m
+[1mdiff --git a/node_modules/.cache/babel-loader/5b889f5919193e90273f28709bf17482b8c68af9.json.gz b/node_modules/.cache/babel-loader/5b889f5919193e90273f28709bf17482b8c68af9.json.gz[m
+[1mnew file mode 100644[m
+[1mindex 00000000..53589648[m
+Binary files /dev/null and b/node_modules/.cache/babel-loader/5b889f5919193e90273f28709bf17482b8c68af9.json.gz differ
+[1mdiff --git a/src/components/Orders.js b/src/components/Orders.js[m
+[1mindex 3a21bec8..ccc0a4db 100644[m
+[1m--- a/src/components/Orders.js[m
+[1m+++ b/src/components/Orders.js[m
+[36m@@ -44,7 +44,7 @@[m [mgetproducts() {[m
+ createOrders(){[m
+     if(this.state.order && this.state.overall){[m
+         console.log("Login Function");[m
+[31m-        axios.post(`${' https://handyman-heroku.herokuapp.com'}/orders?token=${localStorage.getItem('token')}`, {[m
+[32m+[m[32m        axios.post(`${'http://127.0.0.1:1337'}/orders?token=${localStorage.getItem('token')}`, {[m
+             orders: this.state[m
+         })[m
+         .then ((result) => {[m
+[36m@@ -52,7 +52,7 @@[m [mcreateOrders(){[m
+           if(responseJSON){[m
+               console.log(responseJSON.orders);[m
+               alert("orders Created, add more?");[m
+[31m-              window.location.reload();[m
+[32m+[m[32m              //window.location.reload();[m
+           }else{[m
+             alert("Orders not created")[m
+           }[m
+[36m@@ -64,7 +64,7 @@[m [mcreateOrders(){[m
+ [m
+ [m
+ displayorders(){[m
+[31m-        axios.get(`${' https://handyman-heroku.herokuapp.com'}/orders?token=${localStorage.getItem('token')}`, {[m
+[32m+[m[32m        axios.get(`${'http://127.0.0.1:1337'}/orders?token=${localStorage.getItem('token')}`, {[m
+             new: null[m
+         })[m
+         .then ((result) => {[m
+[1mdiff --git a/src/components/PostData.js b/src/components/PostData.js[m
+[1mindex 4c5a1a1f..b2a252d9 100644[m
+[1m--- a/src/components/PostData.js[m
+[1m+++ b/src/components/PostData.js[m
+[36m@@ -1,6 +1,6 @@[m
+ [m
+ export function PostData(type, userData){[m
+[31m-    let BaseUrl = " https://handyman-heroku.herokuapp.com/";[m
+[32m+[m[32m    let BaseUrl = "http://127.0.0.1:1337/";[m
+ [m
+     // http://127.0.0.1:8080[m
+    // http://127.0.0.1:1337[m
+[1mdiff --git a/src/components/storedata.js b/src/components/storedata.js[m
+[1mindex ade5bd8d..13855f03 100644[m
+[1m--- a/src/components/storedata.js[m
+[1m+++ b/src/components/storedata.js[m
+[36m@@ -1,6 +1,6 @@[m
+ [m
+ export function storedata(type, userData){[m
+[31m-    let BaseUrl = " https://handyman-heroku.herokuapp.com/";[m
+[32m+[m[32m    let BaseUrl = "http://127.0.0.1:1337/";[m
+ [m
+ [m
+     return new Promise((resolve, reject) => {[m

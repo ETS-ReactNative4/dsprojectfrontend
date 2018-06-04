@@ -2,6 +2,7 @@
   import { Component } from 'react';
   import { Redirect } from 'react-router';
 
+  import Navbar from './navbar';
 
   class Home extends Component {
 
@@ -54,6 +55,7 @@
     
       return (
         <div className="home">
+        <Navbar username={this.state.username} />
           <h2>Welcome {this.state.username}</h2>
           <br/>
           <button onClick={this.Orders} type="button" >Create Orders</button> 

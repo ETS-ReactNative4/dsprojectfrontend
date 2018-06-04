@@ -1,7 +1,7 @@
   import React, { Component } from 'react';
   import { PostData } from './PostData';
   import { storedata } from './storedata';
-  import { Redirect } from 'react-router-dom';
+  import { Link, Redirect } from 'react-router-dom';
 
 
   class Login extends Component {
@@ -70,11 +70,12 @@
           <div className= "form-group"> 
           <input type="text"  name="username" placeholder="username" onChange={this.onChange}/>
           <br/>
-          <input type="text" name="password" placeholder="password" onChange={this.onChange}/>
+          <input type="password" name="password" placeholder="password" onChange={this.onChange}/>
           <br/>
           <button type="button" onClick={this.login}>Login</button>
           </div>
-      
+
+          <Link className="links" to="/signup">Not registered?</Link>
         </div>
       );
     }

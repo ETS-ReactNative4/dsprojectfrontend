@@ -3,6 +3,7 @@ import { Component } from 'react';
 import { PostData } from './PostData';
 import { Redirect} from 'react-router-dom';
 import axios from 'axios';
+import Navbar from './navbar';
 
 class Orders extends Component {
     constructor(props){
@@ -42,17 +43,17 @@ getproducts() {
     
 }
 createOrders(){
+    // https://handyman-heroku.herokuapp.com
+    // http://127.127.0.0.1:1337
     if(this.state.order && this.state.overall){
         console.log("Login Function");
-        axios.post(`${'http://127.0.0.1:1337'}/orders?token=${localStorage.getItem('token')}`, {
+        axios.post(`${'https://handyman-heroku.herokuapp.com'}/orders?token=${localStorage.getItem('token')}`, {
             orders: this.state
         })
         .then ((result) => {
           let responseJSON = result;
           if(responseJSON){
-              console.log(responseJSON.orders);
-              alert("orders Created, add more?");
-              //window.location.reload();
+              console.log(responseJSON.orders)
           }else{
             alert("Orders not created")
           }
@@ -64,7 +65,7 @@ createOrders(){
 
 
 displayorders(){
-        axios.get(`${'http://127.0.0.1:1337'}/orders?token=${localStorage.getItem('token')}`, {
+        axios.get(`${'https://handyman-heroku.herokuapp.com'}/orders?token=${localStorage.getItem('token')}`, {
             new: null
         })
         .then ((result) => {
@@ -98,9 +99,12 @@ render() {
     
     return (
         <div>
+            <Navbar username={this.state.username} />
+            <br /><br />
             <input type="text" placeholder ="Order name" onKeyUp = {this.onChange}/>
             
-            <select onChange={this.optionClicked}>{
+            <select onChange={this.optionClicked}>
+            <option>Add Products</option>{
                 data.map(function(value, key) {
                     return(
                     <option key={key} >
@@ -116,32 +120,26 @@ render() {
             <br/>
 
             <table>
-                <thead>
                 <tr>
                     <th>ID</th>
                     <th>created</th>
                     <th>order Name</th>
-                </tr>
-                </thead>
+                    </tr>
             {
                 display.map(function(value, key){
                     return(
-                        <tbody key={key}>
-                        <tr>
+                        <tr key={key}>
                         <td>{value.id}</td>
                         <td>{value.createdAt}</td>                        
                         <td>{value.ordername}</td>
                         </tr>
-                        </tbody>
                     )
                 })
             }
             </table>
 
-
-
             <br/>
-            <button onClick={this.history}>View Orders History</button>
+            <button onClick={this.history}>NB: You can add more than one product</button>
 
     </div>
     )

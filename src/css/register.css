@@ -92,3 +92,9 @@ th {
     background-color: #4caf50;
     color: white;
 }
+
+.links {
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #4caf50;
+}

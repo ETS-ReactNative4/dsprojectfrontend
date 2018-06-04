@@ -1,6 +1,6 @@
     import React, { Component } from 'react';
     import { PostData } from './PostData';
-    import { Redirect } from 'react-router-dom';
+    import { Link, Redirect } from 'react-router-dom';
     import { storedata } from './storedata';
 
     import '../css/register.css';
@@ -35,7 +35,7 @@
               localStorage.setItem('token', responseJSON.token);
               this.setState({ redirect: true});
             }else{
-              alert("user already exist || check your details")
+              alert("SignUp Error")
             }
           });
           }else{
@@ -73,15 +73,15 @@
             <input type="text" placeholder="Name" name="name" onChange={this.onChange}/>
             <input type="text"  name="email" placeholder="Email" onChange={this.onChange}/>
             <input type="text"  name="username" placeholder="Username" onChange={this.onChange}/>
-            
+            <br/>
             <input type="password" name="password" placeholder="Password" onChange={this.onChange}/>
-            
+            <br/>
             <input type="text"  name="phone" placeholder="Enter Phone" onChange={this.onChange}/>
-            
+            <br/>
             <button type="button" onClick={this.Signup}>Signup</button>
             </div>
 
-            <spam>Have an Account?</spam><button type="button" onClick={this.tologin}>Login</button>
+            <Link className="links" to="/signin">registered? signin</Link>
 
           </div>
             </div>

@@ -1,7 +1,9 @@
 
 export function storedata(type, userData){
-    let BaseUrl = "http://127.0.0.1:1337/";
+    let BaseUrl = "https://handyman-heroku.herokuapp.com/";
 
+    // https://handyman-heroku.herokuapp.com
+    // http://127.127.0.0.1:1337
 
     return new Promise((resolve, reject) => {
 
