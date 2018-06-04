@@ -1,6 +1,6 @@
 
 export function PostData(type, userData){
-    let BaseUrl = " https://handyman-heroku.herokuapp.com/";
+    let BaseUrl = "http://127.0.0.1:1337/";
 
     // http://127.0.0.1:8080
    // http://127.0.0.1:1337

@@ -44,7 +44,7 @@ getproducts() {
 createOrders(){
     if(this.state.order && this.state.overall){
         console.log("Login Function");
-        axios.post(`${' https://handyman-heroku.herokuapp.com'}/orders?token=${localStorage.getItem('token')}`, {
+        axios.post(`${'http://127.0.0.1:1337'}/orders?token=${localStorage.getItem('token')}`, {
             orders: this.state
         })
         .then ((result) => {
@@ -52,7 +52,7 @@ createOrders(){
           if(responseJSON){
               console.log(responseJSON.orders);
               alert("orders Created, add more?");
-              window.location.reload();
+              //window.location.reload();
           }else{
             alert("Orders not created")
           }
@@ -64,7 +64,7 @@ createOrders(){
 
 
 displayorders(){
-        axios.get(`${' https://handyman-heroku.herokuapp.com'}/orders?token=${localStorage.getItem('token')}`, {
+        axios.get(`${'http://127.0.0.1:1337'}/orders?token=${localStorage.getItem('token')}`, {
             new: null
         })
         .then ((result) => {
