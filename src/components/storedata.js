@@ -1,6 +1,6 @@
 
 export function storedata(type, userData){
-    let BaseUrl = "https://handyman-heroku.herokuapp.com/";
+    let BaseUrl = " https://handyman-heroku.herokuapp.com/";
 
 
     return new Promise((resolve, reject) => {

@@ -44,13 +44,15 @@ getproducts() {
 createOrders(){
     if(this.state.order && this.state.overall){
         console.log("Login Function");
-        axios.post(`${'https://handyman-heroku.herokuapp.com'}/orders?token=${localStorage.getItem('token')}`, {
+        axios.post(`${' https://handyman-heroku.herokuapp.com'}/orders?token=${localStorage.getItem('token')}`, {
             orders: this.state
         })
         .then ((result) => {
           let responseJSON = result;
           if(responseJSON){
-              console.log(responseJSON.orders)
+              console.log(responseJSON.orders);
+              alert("orders Created, add more?");
+              window.location.reload();
           }else{
             alert("Orders not created")
           }
@@ -62,7 +64,7 @@ createOrders(){
 
 
 displayorders(){
-        axios.get(`${'https://handyman-heroku.herokuapp.com'}/orders?token=${localStorage.getItem('token')}`, {
+        axios.get(`${' https://handyman-heroku.herokuapp.com'}/orders?token=${localStorage.getItem('token')}`, {
             new: null
         })
         .then ((result) => {
@@ -114,19 +116,23 @@ render() {
             <br/>
 
             <table>
+                <thead>
                 <tr>
                     <th>ID</th>
                     <th>created</th>
                     <th>order Name</th>
-                    </tr>
+                </tr>
+                </thead>
             {
                 display.map(function(value, key){
                     return(
-                        <tr key={key}>
+                        <tbody key={key}>
+                        <tr>
                         <td>{value.id}</td>
                         <td>{value.createdAt}</td>                        
                         <td>{value.ordername}</td>
                         </tr>
+                        </tbody>
                     )
                 })
             }
@@ -143,99 +149,3 @@ render() {
 
 }
 export default Orders;
-
-// class Orders extends Component {
-//     constructor(props) {
-//         super(props);
-
-//         this.state = {
-//             redirect: false,
-//             username: '',
-//             hobbies: []
-//         }
-
-//         this.handleDeleteHobby = this.handleDeleteHobby.bind(this);
-//         this.handleCreateHobby = this.handleCreateHobby.bind(this);
-//     }
-
-//     componentDidMount() {
-//         if (localStorage.getItem('token') === null) {
-//             this.setState({
-//                 redirect: true
-//             });
-//         };
-
-//         axios.get(`${this.props.domain}/users/hobbies?token=${localStorage.getItem('token')}`)
-//             .then((response) => {
-//                 if (response.data.username && response.data.hobbies) {
-//                     this.setState({
-//                         username: response.data.username,
-//                         hobbies: response.data.hobbies
-//                     });
-//                 }
-//             }).catch((error) => {
-//                 console.error(error);
-//             });
-//         ;
-//     }
-
-//     handleDeleteHobby(hobbyId) {
-//         axios.post(`${this.props.domain}/users/hobbies/delete?token=${localStorage.getItem('token')}`, {
-//             hobbyId: hobbyId
-//         })
-//             .then((response) => {
-//                 if (response.data.hobbies.length > 0) {
-//                     this.setState({
-//                         hobbies: response.data.hobbies
-//                     });
-//                 } else {
-//                     this.setState({
-//                         hobbies: []
-//                     });
-//                 }
-//             }).catch((error) => {
-//                 console.error(error);
-//             });    
-//     }
-
-//     handleCreateHobby(hobbyName) {
-//         axios.post(`${'http://localhost:1337'}/orders?token=${localStorage.getItem('token')}`, {
-//             name: hobbyName
-//         })
-//             .then((response) => {
-//                 if (response.data.hobbies) {
-//                     this.setState({
-//                         hobbies: response.data.hobbies
-//                     });
-//                 } else {
-//                     this.setState({
-//                         hobbies: []
-//                     });
-//                 }
-//             }).catch((error) => {
-//                 console.error(error);
-//             });
-//     }
-
-//     render() {
-//         if (this.state.redirect) {
-//             return (
-//                 <Redirect to="/signin" />
-//             );
-//         } else {
-//             return (
-//                 <div className="container">
-//                     {/* <Navbar username={this.state.username} /> */}
-
-//                     <HobbyDisplay 
-//                         hobbies={this.state.hobbies}
-//                         onDelete={this.handleDeleteHobby}
-//                         onCreate={this.handleCreateHobby}
-//                             />
-//                 </div>
-//             );
-//         }
-//     }
-// }
-
-// export default Orders;

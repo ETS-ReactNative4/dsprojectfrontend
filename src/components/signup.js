@@ -35,7 +35,7 @@
               localStorage.setItem('token', responseJSON.token);
               this.setState({ redirect: true});
             }else{
-              alert("SignUp Error")
+              alert("user already exist || check your details")
             }
           });
           }else{
@@ -73,11 +73,11 @@
             <input type="text" placeholder="Name" name="name" onChange={this.onChange}/>
             <input type="text"  name="email" placeholder="Email" onChange={this.onChange}/>
             <input type="text"  name="username" placeholder="Username" onChange={this.onChange}/>
-            <br/>
+            
             <input type="password" name="password" placeholder="Password" onChange={this.onChange}/>
-            <br/>
+            
             <input type="text"  name="phone" placeholder="Enter Phone" onChange={this.onChange}/>
-            <br/>
+            
             <button type="button" onClick={this.Signup}>Signup</button>
             </div>
 

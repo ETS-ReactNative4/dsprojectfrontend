@@ -19,6 +19,7 @@ class Product extends Component {
 
         this.createProduct = this.createProduct.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.goBack = this.goBack.bind(this);
     }
 
     componentDidMount() {
@@ -28,13 +29,16 @@ class Product extends Component {
             });
         };
     }
-    createProduct(){
+    createProduct(e){
+        e.preventDefault();
+
         if(this.state.product && this.state.prizes && this.state.description){
             console.log("Create products");
             storedata('products', this.state).then ((result) => {
                 let responseJSON = result;
                 if(responseJSON){
-                    alert("Product Created")
+                    alert("Product Created");
+                    window.location.reload();
                 }
                 else{
                     alert("No Response from server: Failed ")
@@ -46,10 +50,23 @@ class Product extends Component {
         }
     }
 
+    goBack(){
+        this.goBack.history.goBack();
+    }
+
     onChange(e){
         this.setState({[e.target.name]: e.target.value})
         console.log(this.state)
       }
+      
+      
+    clearData(){
+        this.setState({
+            product: '',
+            prizes: '',
+            description: ''
+        })
+    }
   render() {
     const { redirect } = this.state;
     if( redirect ){ 
@@ -62,6 +79,7 @@ class Product extends Component {
         <input type="text" name="prizes" placeholder="enter prizes" onChange={this.onChange}/><br/><br/>
         <textarea type="text" name="description" placeholder="Description" onChange={this.onChange}/><br/><br/>
         <button onClick={this.createProduct}>Create products</button>
+        <button onClick={this.goBack}>back</button>
         <br/>
       </div>
     );
