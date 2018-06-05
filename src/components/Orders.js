@@ -11,7 +11,7 @@ class Orders extends Component {
 
         this.state = {
             products: '',
-            order: '',
+            ordername: '',
             overall: [],
             displayorders: ''
         }
@@ -44,8 +44,8 @@ getproducts() {
 }
 createOrders(){
     // https://handyman-heroku.herokuapp.com
-    // http://127.127.0.0.1:1337
-    if(this.state.order && this.state.overall){
+    // http://127.0.0.1:1337
+    if(this.state.ordername!== null && this.state.overall.length !== null){
         console.log("Login Function");
         axios.post(`${'https://handyman-heroku.herokuapp.com'}/orders?token=${localStorage.getItem('token')}`, {
             orders: this.state
@@ -91,7 +91,7 @@ optionClicked(e) {
 
 onChange(e){
     
-    this.setState({order: e.target.value})
+    this.setState({ordername: e.target.value})
     console.log(this.state)
  }
 
@@ -110,7 +110,7 @@ render() {
                 data.map(function(value, key) {
                     return(
                     <option key={key} >
-                    {value.product} - {value.prizes}
+                    {value.products} - {value.prizes}
                     </option>
                     )
                 })
@@ -124,16 +124,16 @@ render() {
             <table>
                 <tr>
                     <th>ID</th>
-                    <th>created</th>
-                    <th>order Name</th>
+                    <th>order name</th>
+                    <th>Products</th>
                     </tr>
             {
                 display.map(function(value, key){
                     return(
                         <tr key={key}>
                         <td>{value.id}</td>
-                        <td>{value.createdAt}</td>                        
                         <td>{value.ordername}</td>
+                        <td>{value.overall}</td>    
                         </tr>
                     )
                 })

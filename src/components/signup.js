@@ -71,12 +71,12 @@
             <div className="form-group"> 
 
             <input type="text" placeholder="Name" name="name" onChange={this.onChange}/>
-            <input type="text"  name="email" placeholder="Email" onChange={this.onChange}/>
+            <input type="email"  name="email" placeholder="Email" onChange={this.onChange}/>
             <input type="text"  name="username" placeholder="Username" onChange={this.onChange}/>
             <br/>
             <input type="password" name="password" placeholder="Password" onChange={this.onChange}/>
             <br/>
-            <input type="text"  name="phone" placeholder="Enter Phone" onChange={this.onChange}/>
+            <input type="tel"  name="phone" placeholder="Enter Phone" onChange={this.onChange}/>
             <br/>
             <button type="button" onClick={this.Signup}>Signup</button>
             </div>

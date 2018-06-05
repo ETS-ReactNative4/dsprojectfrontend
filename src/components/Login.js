@@ -37,11 +37,11 @@
         PostData('users', this.state.fields).then ((result) => {
           let responseJSON = result;
           if(responseJSON.token){
-            console.log(responseJSON.found);
             localStorage.setItem('token', responseJSON.token);
             this.setState({ redirect: true});
           }else{
-            alert("incorrect Credential")
+            alert("incorrect Credential");
+            window.location.reload();
           }
         });
       }else{
