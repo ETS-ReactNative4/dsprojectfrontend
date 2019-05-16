@@ -1,5 +1,5 @@
     import React, { Component } from 'react';
-    import { PostData } from './PostData';
+    // import { PostData } from './PostData';
     import { Link, Redirect } from 'react-router-dom';
     import { storedata } from './storedata';
 
@@ -46,11 +46,9 @@
 
         onChange(e){
           this.setState({[e.target.name]: e.target.value})
-          console.log(this.state)
         }
         tologin(e){
           this.setState({ redirect1: true})
-          console.log(this.state)
         }
         
       render() {
@@ -61,13 +59,13 @@
         const { redirect1 } = this.state;
         if( redirect1 ){ 
           return <Redirect to='/signin' />;
-        }2
+        }
         return (
         <form>
 
           <div className="container">
             <div className="Signup">
-            <h2>Signup </h2>
+            <h2>Signup  <span> (Register to create orders)</span></h2>
             <div className="form-group"> 
 
             <input type="text" placeholder="Name" name="name" onChange={this.onChange}/>

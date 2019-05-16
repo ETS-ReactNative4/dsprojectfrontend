@@ -3,6 +3,7 @@ ul {
     margin: 0;;
     padding: 0;
     overflow: hidden;
+    height: 40px;
     background-color: #333;
 
 }
@@ -14,7 +15,7 @@ li a  {
     display: block;
     color: white;
     text-align: center;
-    padding: 5px 5px;
+    padding: 5px 17px;
     text-decoration: none;
 }
 li a:hover :not(.active) {
@@ -22,4 +23,8 @@ li a:hover :not(.active) {
 }
 .active {
     background-color: #4CAF50;
+}
+
+.container-fluid {
+    width: 700px;
 }

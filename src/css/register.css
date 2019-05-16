@@ -3,15 +3,36 @@ body {
   height: 100%;
 } */
 
+.App {
+    display: flex;
+}
+.Signup {
+    margin-left: 100px;
+}
+.App-title {
+    margin-top: 200px;
+}
+.container span {
+    font-size: 12px;
+}
+.Signin {
+    margin-left: 100px;
+    margin-top: 90px;
+}
+.Signin .form-group {
+    width: 400px;
+}
+.Signin h2 span {
+    font-size: 12px;
+}
+.home {
+    margin: 100px;
+}
+.orders {
+    margin: 100px;
+}
 body {
-  display: -ms-flexbox;
-  display: -webkit-box;
   display: flex;
-  -ms-flex-align: center;
-  -ms-flex-pack: center;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   padding-top: 50px;
   padding-bottom: 40px;

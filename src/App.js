@@ -8,12 +8,11 @@ class App extends Component {
 
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Welcome</h1>
+          <h1 className="App-title">Orders <span s>Science</span> </h1>
+          <span> Making Orders simplified </span>
         </header>
         <App1 />
-        <p className="App-intro">
-          <code>src/App.js</code>
-        </p>
+        
       </div>
     );
   }
