@@ -33,9 +33,9 @@ class Navbar extends Component {
             <div class="container-fluid">
             <ul>
                 <li><a class="active"><Link className="navbar-brand" to="/home">Home</Link></a></li>
-                <li><a><Link  to="/signin">Signin</Link></a></li>
                 <li><a><Link  to="/order">Create Orders</Link></a></li>
                 <li><a><Link  to="/product">Add Products</Link></a></li>
+                <li><a><Link  to="/contact">Contact</Link></a></li>
                 <li><a onClick={this.signout}>Logout</a></li>
             </ul>
             </div>

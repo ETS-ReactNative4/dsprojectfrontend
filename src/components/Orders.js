@@ -1,7 +1,7 @@
 import  React from 'react';
 import { Component } from 'react';
 import { PostData } from './PostData';
-import { Redirect} from 'react-router-dom';
+// import { Redirect} from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './navbar';
 
@@ -97,10 +97,9 @@ onChange(e){
 
 render() {
     const data = Object.values(this.state.products)
-    const display = Object.values(this.state.displayorders)
     
     return (
-        <div>
+        <div className="orders">
             <Navbar username={this.state.username} />
             <br /><br />
             <input type="text" placeholder ="Order name" onKeyUp = {this.onChange}/>
@@ -118,29 +117,7 @@ render() {
             </select>
             <button onClick={this.createOrders}>Post Orders</button>
             <br /><br />
-            <br/>
-            <br/>
-
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>order name</th>
-                    <th>Products</th>
-                    </tr>
-            {
-                display.map(function(value, key){
-                    return(
-                        <tr key={key}>
-                        <td>{value.id}</td>
-                        <td>{value.ordername}</td>
-                        <td>{value.overall}</td>    
-                        </tr>
-                    )
-                })
-            }
-            </table>
-
-            <br/>
+            
             <button onClick={this.history}>NB: You can add more than one product</button>
 
     </div>

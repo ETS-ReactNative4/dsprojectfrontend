@@ -1,6 +1,6 @@
   import React, { Component } from 'react';
   import { PostData } from './PostData';
-  import { storedata } from './storedata';
+  // import { storedata } from './storedata';
   import { Link, Redirect } from 'react-router-dom';
 
 
@@ -31,8 +31,6 @@
       
   login(e){
     e.preventDefault();
-        
-    
     if(this.state.fields.username && this.state.fields.password){
         PostData('users', this.state.fields).then ((result) => {
           let responseJSON = result;
@@ -56,7 +54,6 @@
     this.setState({
         fields: currentFields
     });
-    console.log(this.state)
   }
       
     render() {
@@ -65,8 +62,8 @@
         return <Redirect to='/home' />;
       }
       return (
-        <div className="Signup">
-          <h2>Login </h2>
+        <div className="Signin">
+          <h2>Login  <span> (Login to create orders)</span></h2>
           <div className= "form-group"> 
           <input type="text"  name="username" placeholder="username" onChange={this.onChange}/>
           <br/>
